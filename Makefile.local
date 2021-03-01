@@ -1,0 +1,29 @@
+CC=mpicc
+CXX=mpicxx
+CXXFLAGS=-O0 -ggdb
+CFLAGS=-O0 -ggdb
+
+PNC_DIR=${HOME}/.local/pnetcdf/master
+HDF5_DIR=${HOME}/.local/hdf5/1.12.0
+LOGVOL_DIR=${HOME}/.local/log_io_vol/master
+
+CFLAGS+=-I${PNC_DIR}/include -I${HDF5_DIR}/include -I${LOGVOL_DIR}/include
+CXXFLAGS+=-I${PNC_DIR}/include -I${HDF5_DIR}/include -I${LOGVOL_DIR}/include
+LDFLAGS=-L${PNC_DIR}/lib -L${HDF5_DIR}/lib -L${LOGVOL_DIR}/lib
+
+LIBS=-lpnetcdf -lhdf5 -lH5VL_log
+
+all: demo
+
+demo: dwriten_demo.o read_decomp.o ndwrite.o profiling.o dwrite.o dwriten.o
+	$(CXX) $(CXXFLAGS) -o $@ ${LDFLAGS} $^ $(LIBS)
+
+%.o: %.c 
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -c -o $@ $<
+
+clean:
+	rm *.o 
+	rm demo
