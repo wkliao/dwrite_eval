@@ -23,18 +23,12 @@
 /*----< usage() >------------------------------------------------------------*/
 static void usage (char *argv0) {
     std::string help =
-        "Usage: %s [OPTION]... FILE\n"
+        "Usage: %s [OPTION]...\n"
         "       [-h] Print help\n"
         "       [-v] Verbose mode\n"
-        "       [-k] Keep the output files when program exits\n"
-        "       [-d] Run test that uses PnetCDF vard API\n"
-        "       [-n] Run test that uses PnetCDF varn API\n"
-        "       [-m] Run test using noncontiguous write buffer\n"
-        "       [-t] Write 2D variables followed by 3D variables\n"
-        "       [-r num] Number of records (default 1)\n"
-        "       [-s num] Stride between IO tasks (default 1)\n"
-        "       [-o output_dir] Output directory name (default ./)\n"
-        "       FILE: Name of input netCDF file describing data decompositions\n";
+        "       [-n nvar] Number of datasets to simulate\n"
+        "       [-c file_path] Name of input netCDF file describing data decompositions\n"
+        "       [-o output_dir] Output directory name (default ./)\n";
     fprintf (stderr, help.c_str (), argv0);
 }
 
