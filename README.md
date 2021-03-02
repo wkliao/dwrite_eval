@@ -40,78 +40,43 @@ methods below:
   ```
 * Sample output:
   ```
-  % ./dwrite_eval -c datasets/f_case_866x72_16p.nc -o ./
+  % ./dwrite_eval -o . -c datasets/f_case_866x72_16p.nc 
   Reading decom file ...
   Testing N H5Dwrite ...
   Testing single H5Dwrite ...
   Testing H5Dwrite_n ...
-  #%$: dwrite_eval_total_time_mean: 0.054922
-  #%$: dwrite_eval_total_time_max: 0.054922
-  #%$: dwrite_eval_total_time_min: 0.054922
-  #%$: dwrite_eval_total_time_var: 0.000000
+  total run time (mean): 0.007596
+  total run time (max): 0.007596
+  total run time (min): 0.007596
+  total run time (var): 0.000000
 
-  #%$: dwrite_eval_ndwrite_time_mean: 0.016290
-  #%$: dwrite_eval_ndwrite_time_max: 0.016290
-  #%$: dwrite_eval_ndwrite_time_min: 0.016290
-  #%$: dwrite_eval_ndwrite_time_var: 0.000000
+  end to end I/O time using H5Dwrite per hyper-slab (mean): 0.002850
+  end to end I/O time using H5Dwrite per hyper-slab (max): 0.002850
+  end to end I/O time using H5Dwrite per hyper-slab (min): 0.002850
+  end to end I/O time using H5Dwrite per hyper-slab (var): 0.000000
 
-  #%$: dwrite_eval_ndwrite_wr_time_mean: 0.000072
-  #%$: dwrite_eval_ndwrite_wr_time_max: 0.000072
-  #%$: dwrite_eval_ndwrite_wr_time_min: 0.000072
-  #%$: dwrite_eval_ndwrite_wr_time_var: 0.000000
+  dataset write (posting) time using H5Dwrite per hyper-slab (mean): 0.000066
+  dataset write (posting) time using H5Dwrite per hyper-slab (max): 0.000066
+  dataset write (posting) time using H5Dwrite per hyper-slab (min): 0.000066
+  dataset write (posting) time using H5Dwrite per hyper-slab (var): 0.000000
 
-  #%$: dwrite_eval_dwrite_time_mean: 0.006794
-  #%$: dwrite_eval_dwrite_time_max: 0.006794
-  #%$: dwrite_eval_dwrite_time_min: 0.006794
-  #%$: dwrite_eval_dwrite_time_var: 0.000000
+  end to end I/O time using H5S_SELECT_OR and single H5Dwrite (mean): 0.001286
+  end to end I/O time using H5S_SELECT_OR and single H5Dwrite (max): 0.001286
+  end to end I/O time using H5S_SELECT_OR and single H5Dwrite (min): 0.001286
+  end to end I/O time using H5S_SELECT_OR and single H5Dwrite (var): 0.000000
 
-  #%$: dwrite_eval_dwrite_wr_time_mean: 0.000048
-  #%$: dwrite_eval_dwrite_wr_time_max: 0.000048
-  #%$: dwrite_eval_dwrite_wr_time_min: 0.000048
-  #%$: dwrite_eval_dwrite_wr_time_var: 0.000000
+  dataset write (posting) time using H5S_SELECT_OR and single H5Dwrite (mean): 0.000044
+  dataset write (posting) time using H5S_SELECT_OR and single H5Dwrite (max): 0.000044
+  dataset write (posting) time using H5S_SELECT_OR and single H5Dwrite (min): 0.000044
+  dataset write (posting) time using H5S_SELECT_OR and single H5Dwrite (var): 0.000000
 
-  #%$: dwrite_eval_dwrite_n_time_mean: 0.029205
-  #%$: dwrite_eval_dwrite_n_time_max: 0.029205
-  #%$: dwrite_eval_dwrite_n_time_min: 0.029205
-  #%$: dwrite_eval_dwrite_n_time_var: 0.000000
+  end to end I/O time using log-based VOL H5Dwrite_n (mean): 0.000865
+  end to end I/O time using log-based VOL H5Dwrite_n (max): 0.000865
+  end to end I/O time using log-based VOL H5Dwrite_n (min): 0.000865
+  end to end I/O time using log-based VOL H5Dwrite_n (var): 0.000000
 
-  #%$: dwrite_eval_dwrite_n_wr_time_mean: 0.000041
-  #%$: dwrite_eval_dwrite_n_wr_time_max: 0.000041
-  #%$: dwrite_eval_dwrite_n_wr_time_min: 0.000041
-  #%$: dwrite_eval_dwrite_n_wr_time_var: 0.000000
-
-  #%$: dwrite_eval_total_count_mean: 1.000000
-  #%$: dwrite_eval_total_count_max: 1.000000
-  #%$: dwrite_eval_total_count_min: 1.000000
-  #%$: dwrite_eval_total_count_var: 0.000000
-
-  #%$: dwrite_eval_ndwrite_count_mean: 1.000000
-  #%$: dwrite_eval_ndwrite_count_max: 1.000000
-  #%$: dwrite_eval_ndwrite_count_min: 1.000000
-  #%$: dwrite_eval_ndwrite_count_var: 0.000000
-
-  #%$: dwrite_eval_ndwrite_wr_count_mean: 1.000000
-  #%$: dwrite_eval_ndwrite_wr_count_max: 1.000000
-  #%$: dwrite_eval_ndwrite_wr_count_min: 1.000000
-  #%$: dwrite_eval_ndwrite_wr_count_var: 0.000000
-
-  #%$: dwrite_eval_dwrite_count_mean: 1.000000
-  #%$: dwrite_eval_dwrite_count_max: 1.000000
-  #%$: dwrite_eval_dwrite_count_min: 1.000000
-  #%$: dwrite_eval_dwrite_count_var: 0.000000
-
-  #%$: dwrite_eval_dwrite_wr_count_mean: 1.000000
-  #%$: dwrite_eval_dwrite_wr_count_max: 1.000000
-  #%$: dwrite_eval_dwrite_wr_count_min: 1.000000
-  #%$: dwrite_eval_dwrite_wr_count_var: 0.000000
-
-  #%$: dwrite_eval_dwrite_n_count_mean: 1.000000
-  #%$: dwrite_eval_dwrite_n_count_max: 1.000000
-  #%$: dwrite_eval_dwrite_n_count_min: 1.000000
-  #%$: dwrite_eval_dwrite_n_count_var: 0.000000
-
-  #%$: dwrite_eval_dwrite_n_wr_count_mean: 1.000000
-  #%$: dwrite_eval_dwrite_n_wr_count_max: 1.000000
-  #%$: dwrite_eval_dwrite_n_wr_count_min: 1.000000
-  #%$: dwrite_eval_dwrite_n_wr_count_var: 0.000000
+  dataset write (posting) time using log-based VOL H5Dwrite_n (mean): 0.000033
+  dataset write (posting) time using log-based VOL H5Dwrite_n (max): 0.000033
+  dataset write (posting) time using log-based VOL H5Dwrite_n (min): 0.000033
+  dataset write (posting) time using log-based VOL H5Dwrite_n (var): 0.000000
   ```
