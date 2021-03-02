@@ -18,9 +18,6 @@ herr_t demo_dwrite_n (MPI_Comm comm,
     herr_t err = 0;
     int i, j;
     int nreq;
-    hid_t did;
-    hid_t dsid;
-    hid_t msid;
     hid_t fid;
     hid_t dxplid;
     std::vector<hid_t> dids;
@@ -55,6 +52,8 @@ herr_t demo_dwrite_n (MPI_Comm comm,
         count    = start + nreqs[i];
         start[0] = (hsize_t *)malloc (sizeof (hsize_t) * nreqs[i] * 2);
         count[0] = start[0] + nreqs[i];
+        start[0][0] = (hsize_t)offs[i][0];
+        count[0][0] = (hsize_t)lens[i][0];
 
         for (j = 1; j < nreqs[i]; j++) {
             start[j]    = start[j - 1] + 1;
@@ -68,7 +67,7 @@ herr_t demo_dwrite_n (MPI_Comm comm,
     }
 
     for (i = 0; i < nvar; i++) {
-        err = H5Dwrite_n (did, H5T_NATIVE_INT, nreqs[i % ndecom], starts[i%ndecom], counts[i%ndecom], dxplid, bufs[i]);
+        err = H5Dwrite_n (dids[i], H5T_NATIVE_INT, nreqs[i % ndecom], starts[i%ndecom], counts[i%ndecom], dxplid, bufs[i]);
     }
 
     for (i = 0; i < ndecom; i++) {
