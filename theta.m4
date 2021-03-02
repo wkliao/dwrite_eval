@@ -56,7 +56,7 @@ echo '-----+-----++----***--------+++++**++++--+---'
 echo "mkdir -p ${OUTDIR_ROOT}"
 mkdir -p ${OUTDIR_ROOT}
 
-export LD_LIBRARY_PATH=${HDF5_LIB_PATH}/lib:${PNC_LIB_PATH}/lib:${LOGVOL_LIB_PATH}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HDF5_LIB_PATH}/lib:${PNC_LIB_PATH}/lib:${LOGVOL_LIB_PATH}/lib:/opt/intel/compilers_and_libraries_2020.0.166/linux/compiler/lib/intel64:${LD_LIBRARY_PATH}
 #export HDF5_PLUGIN_PATH=${HOME}/.local/lib
 export H5VL_LOG_METADATA_MERGE=1
 export H5VL_LOG_METADATA_ZIP=1
