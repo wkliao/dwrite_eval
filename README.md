@@ -1,17 +1,18 @@
-## H5Dwrite_n dwrite_eval
+## Performance evaluation of different H5Dwrite methods
 
-This is a dwrite_eval program containing a case study of different approaches 
-to writing multiple hyper-slabs in HDF5 datasets using the 
+This `dwrite_eval` program is a case study of different approaches 
+to writing multiple hyper-slabs into an HDF5 dataset using the 
 [log-io VOL](https://github.com/DataLib-ECP/log_io_vol).
-The dwrite_eval program simulates the I/O pattern of the 
+`dwrite_eval` emulates the I/O pattern of the
+[E3SM](https://github.com/E3SM-Project/E3SM) and
 [E3SM-IO Benchmark](https://github.com/Parallel-NetCDF/E3SM-IO) where 
-each process performs a large amount of non-contiguous write to datasets.
-The dwrite_eval reports the time to write those datasets using the three 
-methods below:
-  1. Call H5Dwrite on each non-contiguous hyper-slab to write.
-  2. Use H5S_SELECT_OR to select all hyper-slabs to write in a dataset 
-     and only call H5Dwrite once.
-  3. Use the H5Dwrite_n API provided in the log-io VOL.
+each process performs a large amount of non-contiguous write requests to datasets.
+`dwrite_eval` reports the time to write those datasets using the following three 
+methods:
+  1. Call `H5Dwrite` on each non-contiguous hyper-slab to write.
+  2. Use `H5S_SELECT_OR` to select all hyper-slabs to write in a dataset 
+     and only call `H5Dwrite` once.
+  3. Use the new `H5Dwrite_n` API provided in the log-based VOL.
 
 ### Compile command to build the executable of benchmark program, `dwrite_eval`:
 * Edit `Makefile` to customize the MPI compiler, compile options, location of
