@@ -13,9 +13,9 @@ LDFLAGS=-L${PNC_DIR}/lib -L${HDF5_DIR}/lib -L${LOGVOL_DIR}/lib
 
 LIBS=-lpnetcdf -lhdf5 -lH5VL_log
 
-all: demo
+all: dwrite_eval
 
-demo: dwriten_demo.o read_decomp.o ndwrite.o profiling.o dwrite.o dwriten.o
+dwrite_eval: dwrite_eval.o read_decomp.o ndwrite.o profiling.o dwrite.o dwriten.o
 	$(CXX) $(CXXFLAGS) -o $@ ${LDFLAGS} $^ $(LIBS)
 
 %.o: %.c 
@@ -26,4 +26,4 @@ demo: dwriten_demo.o read_decomp.o ndwrite.o profiling.o dwrite.o dwriten.o
 
 clean:
 	rm *.o 
-	rm demo
+	rm dwrite_eval

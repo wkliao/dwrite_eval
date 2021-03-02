@@ -3,14 +3,14 @@
  * Copyright (C) 2021, Northwestern University
  * See COPYRIGHT notice in top-level directory.
  *
- * This program demonstrates the performance different of
+ * This program dwrite_evalnstrates the performance different of
  * H5Dwrite and H5Drwite_N in log-io-vol.
  *
  * See README.md for compile and run instructions.
  *
  *********************************************************************/
 
-#include "dwriten_demo.hpp"
+#include "dwrite_eval.hpp"
 
 #include <mpi.h>
 #include <unistd.h>
@@ -77,7 +77,7 @@ int main (int argc, char **argv) {
         }
     }
 
-    demo_profile_reset ();
+    dwrite_eval_profile_reset ();
 
     TIMER_START
 
@@ -93,26 +93,26 @@ int main (int argc, char **argv) {
         std::cout << "Testing N H5Dwrite ..." << std::endl;        
     }
 
-    err = demo_ndwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
+    err = dwrite_eval_ndwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
 
     if(rank==0){
         std::cout << "Testing single H5Dwrite ..." << std::endl;        
     }
 
-    err = demo_dwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
+    err = dwrite_eval_dwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
 
     if(rank==0){
         std::cout << "Testing H5Dwrite_n ..." << std::endl;        
     }
 
-    err = demo_dwrite_n (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
+    err = dwrite_eval_dwrite_n (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
 
-    TIMER_STOP (DEMO_TIMER_ALL)
+    TIMER_STOP (DWRITE_EVAL_TIMER_ALL)
 
-    demo_profile_print ();
+    dwrite_eval_profile_print ();
 
 err_out:;
     return 0;

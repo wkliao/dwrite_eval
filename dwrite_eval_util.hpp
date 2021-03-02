@@ -6,9 +6,9 @@
 #include <string>
 #include <vector>
 
-#include "dwriten_demo.hpp"
+#include "dwrite_eval.hpp"
 
-inline herr_t demo_balloc (int nvar,
+inline herr_t dwrite_eval_balloc (int nvar,
                            int ndecom,
                            MPI_Offset dims[][2],
                            int nreqs[],
@@ -36,7 +36,7 @@ err_out:;
     return err;
 }
 
-inline herr_t demo_init (MPI_Comm comm,
+inline herr_t dwrite_eval_init (MPI_Comm comm,
                          std::string path,
                          int nvar,
                          int ndecomp,
@@ -92,7 +92,7 @@ err_out:;
     return err;
 }
 
-inline herr_t demo_fin (hid_t &fid,
+inline herr_t dwrite_eval_fin (hid_t &fid,
                         std::vector<hid_t> &dids,
                         std::vector<hid_t> &dsids,
                         std::vector<char *> &bufs) {

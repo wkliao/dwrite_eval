@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 
-#include "demo_util.hpp"
-#include "dwriten_demo.hpp"
+#include "dwrite_eval_util.hpp"
+#include "dwrite_eval.hpp"
 
-herr_t demo_dwrite_n (MPI_Comm comm,
+herr_t dwrite_eval_dwrite_n (MPI_Comm comm,
                      std::string &out_dir_path,
                      int nvar,
                      int ndecom,
@@ -34,10 +34,10 @@ herr_t demo_dwrite_n (MPI_Comm comm,
 
     TIMER_START
 
-    err = demo_init (comm, out_dir_path + "/dwriten.h5", nvar, ndecom, dims, fid, dids, dsids);
+    err = dwrite_eval_init (comm, out_dir_path + "/dwriten.h5", nvar, ndecom, dims, fid, dids, dsids);
     CHECK_ERR
 
-    err = demo_balloc (nvar, ndecom, dims, nreqs, lens, bufs);
+    err = dwrite_eval_balloc (nvar, ndecom, dims, nreqs, lens, bufs);
     CHECK_ERR
 
     TIMER_START
@@ -74,12 +74,12 @@ herr_t demo_dwrite_n (MPI_Comm comm,
         free(starts[i][0]);
         free(starts[i]);
     }
-    TIMER_STOP (DEMO_TIMER_DWRITEN_WR)
+    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITEN_WR)
 
-    err = demo_fin (fid, dids, dsids, bufs);
+    err = dwrite_eval_fin (fid, dids, dsids, bufs);
     CHECK_ERR
 
 err_out:;
-    TIMER_STOP (DEMO_TIMER_DWRITEN)
+    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITEN)
     return err;
 }
