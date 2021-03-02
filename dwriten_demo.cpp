@@ -16,6 +16,7 @@
 #include <unistd.h>
 
 #include <cstdio>
+#include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include <string>
@@ -80,15 +81,31 @@ int main (int argc, char **argv) {
 
     TIMER_START
 
+    if(rank==0){
+        std::cout << "Reading decom file ..." << std::endl;        
+    }
+
     err = read_decomp (io_comm, config_path.c_str (), &ndecom, dims, contig_nreqs, disps, blocklens,
                        verbose);
     CHECK_ERR
 
+    if(rank==0){
+        std::cout << "Testing N H5Dwrite ..." << std::endl;        
+    }
+
     err = demo_ndwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
 
+    if(rank==0){
+        std::cout << "Testing single H5Dwrite ..." << std::endl;        
+    }
+
     err = demo_dwrite (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
+
+    if(rank==0){
+        std::cout << "Testing H5Dwrite_n ..." << std::endl;        
+    }
 
     err = demo_dwrite_n (io_comm, out_dir_path, nvar, ndecom, dims, contig_nreqs, disps, blocklens);
     CHECK_ERR
