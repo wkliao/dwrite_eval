@@ -43,6 +43,8 @@ herr_t dwrite_eval_ndwrite (MPI_Comm comm,
     err = dwrite_eval_balloc (nvar, ndecom, dims, nreqs, lens, bufs);
     CHECK_ERR
 
+    MPI_Barrier(comm);
+
     TIMER_START
 
     dxplid = H5Pcreate (H5P_DATASET_XFER);
