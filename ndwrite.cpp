@@ -37,7 +37,7 @@ herr_t demo_ndwrite (MPI_Comm comm,
 
     TIMER_START
 
-    err = demo_init (comm, out_dir_path + "/dwriten.h5", nvar, ndecom, dims, fid, dids, dsids);
+    err = demo_init (comm, out_dir_path + "/ndwrite.h5", nvar, ndecom, dims, fid, dids, dsids);
     CHECK_ERR
 
     err = demo_balloc (nvar, ndecom, dims, nreqs, lens, bufs);
