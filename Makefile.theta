@@ -1,5 +1,5 @@
 CC=cc
-CXX=CXX
+CXX=CC
 CXXFLAGS=-O2
 CFLAGS=-O2
 
@@ -26,4 +26,4 @@ dwrite_eval: dwrite_eval.o read_decomp.o ndwrite.o profiling.o dwrite.o dwriten.
 
 clean:
 	rm *.o 
-	rm dwrite_eval
+	rm -f dwrite_eval
