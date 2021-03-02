@@ -153,6 +153,7 @@ fi
 NP=NN*PPN
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 DWRITE_EVAL_HASH=$(git --git-dir .git rev-parse HEAD)
 DWRITE_EVAL_HASH_PREFIX=${DWRITE_EVAL_HASH:0:5}
 DWRITE_EVAL_DATE=$(stat -c %Y ./dwrite_eval)
@@ -161,6 +162,11 @@ DEMO_HASH=$(git --git-dir .git rev-parse HEAD)
 DEMO_HASH_PREFIX=${DEMO_HASH:0:5}
 DEMO_DATE=$(stat -c %Y ./demo)
 >>>>>>> job script for cori and theta
+=======
+DWRITE_EVAL_HASH=$(git --git-dir .git rev-parse HEAD)
+DWRITE_EVAL_HASH_PREFIX=${DWRITE_EVAL_HASH:0:5}
+DWRITE_EVAL_DATE=$(stat -c %Y ./dwrite_eval)
+>>>>>>> demo->dwrite_eval
 
 HDF5_HASH=$(git --git-dir ${HDF5_SRC_PATH}/.git rev-parse HEAD)
 HDF5_HASH_PREFIX=${HDF5_HASH:0:5}
@@ -174,10 +180,14 @@ LOGVOL_HASH_PREFIX=${LOGVOL_HASH:0:5}
 LOGVOL_DATE=$(stat -c %Y ${LOGVOL_LIB_PATH}/lib/libH5VL_log.so.0.0.0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 FNAME="${CONFIG}_logvl${LOGVOL_HASH_PREFIX}_e3sm${DWRITE_EVAL_HASH_PREFIX}_hdf${HDF5_HASH_PREFIX}_pnc${PNC_HASH_PREFIX}_${HOSTNAME_PREFIX}_${NN}_${PPN}"
 =======
 FNAME="${CONFIG}_logvl${LOGVOL_HASH_PREFIX}_e3sm${DEMO_HASH_PREFIX}_hdf${HDF5_HASH_PREFIX}_pnc${PNC_HASH_PREFIX}_${HOSTNAME_PREFIX}_${NN}_${PPN}"
 >>>>>>> job script for cori and theta
+=======
+FNAME="${CONFIG}_logvl${LOGVOL_HASH_PREFIX}_e3sm${DWRITE_EVAL_HASH_PREFIX}_hdf${HDF5_HASH_PREFIX}_pnc${PNC_HASH_PREFIX}_${HOSTNAME_PREFIX}_${NN}_${PPN}"
+>>>>>>> demo->dwrite_eval
 
 SUBMIT_DATE=$(date)
 
@@ -185,10 +195,14 @@ GEN_SCRIPT="m4 -D EXP_NAME=\"${FNAME}\" -D EXP_NN=\"${NN}\" -D EXP_PPN=\"${PPN}\
 -D EXP_OUTDIR_ROOT=\"${OUTPATH_ROOT}\" -D EXP_CONFIG=\"${CONFIG}\" -D EXP_RECS=\"${RECS}\" -D EXP_NVAR=\"${NVAR}\" \
 -D EXP_RUNS=\"${RUNS}\" -D EXP_RTL=\"${RTL}\" -D EXP_SUBMIT_DATE=\"${SUBMIT_DATE}\"  -D EXP_QUEUE=\"${QUEUE}\" \
 <<<<<<< HEAD
+<<<<<<< HEAD
 -D EXP_DWRITE_EVAL_HASH=\"${DWRITE_EVAL_HASH}\" -D EXP_DWRITE_EVAL_DATE=\"${DWRITE_EVAL_DATE}\" \
 =======
 -D EXP_DEMO_HASH=\"${DEMO_HASH}\" -D EXP_DEMO_DATE=\"${DEMO_DATE}\" \
 >>>>>>> job script for cori and theta
+=======
+-D EXP_DWRITE_EVAL_HASH=\"${DWRITE_EVAL_HASH}\" -D EXP_DWRITE_EVAL_DATE=\"${DWRITE_EVAL_DATE}\" \
+>>>>>>> demo->dwrite_eval
 -D EXP_HDF5_LIB_PATH=\"${HDF5_LIB_PATH}\" -D EXP_HDF5_LIB_DATE=\"${HDF5_DATE}\" -D EXP_HDF5_HASH=\"${HDF5_HASH}\" \
 -D EXP_PNC_LIB_PATH=\"${PNC_LIB_PATH}\" -D EXP_PNC_HASH=\"${PNC_HASH}\" \
 -D EXP_LOGVOL_LIB_PATH=\"${LOGVOL_LIB_PATH}\" -D EXP_LOGVOL_HASH=\"${LOGVOL_HASH}\" -D EXP_LOGVOL_LIB_DATE=\"${LOGVOL_DATE}\" \
