@@ -15,7 +15,7 @@ CONFIG_F30=datasets/f_case_48602x72_512p.nc
 CONFIG_F120=/global/cscratch1/sd/khl7265/FS_64_1M/E3SM/decom/FC5AV1C-H01B_ne120_oRRS18v3_21600p.nc
 CONFIG_G=/global/cscratch1/sd/khl7265/FS_64_1M/E3SM/decom/GMPAS-NYF_T62_oRRS18to6v3_9600p.nc
 
-DEMO_DATE="EXP_DEMO_DATE"
+DWRITE_EVAL_DATE="EXP_DWRITE_EVAL_DATE"
 HDF5_LIB_PATH=EXP_HDF5_LIB_PATH
 HDF5_LIB_DATE="EXP_HDF5_LIB_DATE"
 PNC_LIB_PATH=EXP_PNC_LIB_PATH
@@ -28,7 +28,7 @@ RTL=EXP_RTL
 CONFIG_POST=EXP_CONFIG
 OUTDIR_ROOT=EXP_OUTDIR_ROOT
 
-APP=demo
+APP=dwrite_eval
 CONFIG="CONFIG_${CONFIG_POST}"
 CONFIG=${!CONFIG}
 
@@ -36,7 +36,7 @@ NN=${SLURM_NNODES}
 let NP=NN*PPN
 
 # Print exp setting
-echo "#%$: demo_hash: EXP_DEMO_HASH"
+echo "#%$: dwrite_eval_hash: EXP_DWRITE_EVAL_HASH"
 echo "#%$: pnc_hash: EXP_PNC_HASH"
 echo "#%$: pnc_path: ${PNC_LIB_PATH}"
 echo "#%$: hdf5_hash: EXP_HDF5_HASH"
@@ -45,7 +45,7 @@ echo "#%$: logvol_hash: EXP_LOGVOL_HASH"
 echo "#%$: logvol_path: ${LOGVOL_LIB_PATH}"
 echo "#%$: submit_date: EXP_SUBMIT_DATE"
 echo "#%$: exe_date: $(date)"
-echo "#%$: exp: demo"
+echo "#%$: exp: dwrite_eval"
 echo "#%$: nvars: ${NVAR}"
 echo "#%$: repeation: EXP_RUNS"
 echo "#%$: output_folder: EXP_OUTDIR_ROOT"
@@ -74,12 +74,12 @@ do
     echo "rm -f ${OUTDIR}/*"
     rm -f ${OUTDIR}/*
 
-    echo "========================== DEMO =========================="
-    >&2 echo "========================== DEMO =========================="
+    echo "========================== DWRITE_EVAL =========================="
+    >&2 echo "========================== DWRITE_EVAL =========================="
     
-    CUR_DEMO_DATE=$(stat -c %Y ./demo)
-    if [[ "${CUR_DEMO_DATE}" != "${DEMO_DATE}" ]]; then
-        echo "Warning: demo changed after submission"
+    CUR_DWRITE_EVAL_DATE=$(stat -c %Y ./dwrite_eval)
+    if [[ "${CUR_DWRITE_EVAL_DATE}" != "${DWRITE_EVAL_DATE}" ]]; then
+        echo "Warning: dwrite_eval changed after submission"
     fi
     CUR_HDF5_DATE=$(stat -c %Y ${HDF5_LIB_PATH}/lib/libhdf5.so.200.0.0)
     if [[ "${CUR_HDF5_DATE}" != "${HDF5_LIB_DATE}" ]]; then
@@ -90,7 +90,7 @@ do
         echo "Warning: libH5VL_log.so.0.0.0 changed after submission"
     fi
 
-    echo "#%$: exp: demo"
+    echo "#%$: exp: dwrite_eval"
     echo "#%$: app: ${APP}"
     echo "#%$: config: ${CONFIG}"
     echo "#%$: nrecords: ${NREC}"
