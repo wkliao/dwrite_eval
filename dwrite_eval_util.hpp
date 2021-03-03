@@ -22,7 +22,7 @@ inline herr_t dwrite_eval_balloc (int nvar,
 
     for (i = 0; i < ndecom; i++) {
         bsize = 0;
-        for (j = 0; j < nreqs[i]; j++) { bsize += lens[i][j] * dims[i][0]; }
+        for (j = 0; j < nreqs[i]; j++) { bsize += lens[i][j]; }
         bsize *= sizeof (int);
         bsizes.push_back (bsize);
     }
