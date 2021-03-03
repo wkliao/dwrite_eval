@@ -76,7 +76,10 @@ herr_t dwrite_eval_ndwrite (MPI_Comm comm,
             err      = H5Sselect_hyperslab (msid, H5S_SELECT_SET, start, NULL, one, count);
             CHECK_ERR
 
+            TIMER_START
             err = H5Dwrite (did, H5T_NATIVE_INT, msid, dsid, dxplid, buf);
+            TIMER_STOP (DWRITE_EVAL_TIMER_NDWRITE_WR)
+            
             buf += count[0];
         }
     }
@@ -86,7 +89,7 @@ herr_t dwrite_eval_ndwrite (MPI_Comm comm,
     err = H5Pclose (dxplid);
     CHECK_ERR
 
-    TIMER_STOP (DWRITE_EVAL_TIMER_NDWRITE_WR)
+    TIMER_STOP (DWRITE_EVAL_TIMER_NDWRITE_POST)
     MPI_Barrier(comm);
     TIMER_START
 

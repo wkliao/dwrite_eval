@@ -9,11 +9,14 @@ static double tlocal[DWRITE_EVAL_NTIMER];
 const char *const tname[] = {
 	"total run time",
 	"end to end I/O time using H5Dwrite per hyper-slab",
-	"dataset write (posting) time using H5Dwrite per hyper-slab",
+	"write request posting time using H5Dwrite per hyper-slab",
+	"time calling H5Dwrite using H5Dwrite per hyper-slab",
 	"end to end I/O time using H5S_SELECT_OR and single H5Dwrite",
-	"dataset write (posting) time using H5S_SELECT_OR and single H5Dwrite",
+	"write request posting time using H5S_SELECT_OR and single H5Dwrite",
+	"time calling H5Dwrite using H5S_SELECT_OR and single H5Dwrite",
 	"end to end I/O time using log-based VOL H5Dwrite_n",
-	"dataset write (posting) time using log-based VOL H5Dwrite_n",
+	"write request posting time using log-based VOL H5Dwrite_n",
+	"time calling H5Dwrite using log-based VOL H5Dwrite_n",
 };
 
 void dwrite_eval_profile_add_time (int id, double t) {

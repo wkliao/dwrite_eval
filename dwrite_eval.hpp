@@ -19,14 +19,17 @@
 
 #define MAX_NUM_DECOMP 6
 
-#define DWRITE_EVAL_TIMER_ALL        0
-#define DWRITE_EVAL_TIMER_NDWRITE    1
-#define DWRITE_EVAL_TIMER_NDWRITE_WR 2
-#define DWRITE_EVAL_TIMER_DWRITE     3
-#define DWRITE_EVAL_TIMER_DWRITE_WR  4
-#define DWRITE_EVAL_TIMER_DWRITEN    5
-#define DWRITE_EVAL_TIMER_DWRITEN_WR 6
-#define DWRITE_EVAL_NTIMER           7
+#define DWRITE_EVAL_TIMER_ALL          0
+#define DWRITE_EVAL_TIMER_NDWRITE      1
+#define DWRITE_EVAL_TIMER_NDWRITE_POST 2
+#define DWRITE_EVAL_TIMER_NDWRITE_WR   3
+#define DWRITE_EVAL_TIMER_DWRITE       4
+#define DWRITE_EVAL_TIMER_DWRITE_POST  5
+#define DWRITE_EVAL_TIMER_DWRITE_WR    6
+#define DWRITE_EVAL_TIMER_DWRITEN      7
+#define DWRITE_EVAL_TIMER_DWRITEN_POST 8
+#define DWRITE_EVAL_TIMER_DWRITEN_WR   9
+#define DWRITE_EVAL_NTIMER             10
 
 #define CHECK_NCERR                                                                      \
     {                                                                                    \
@@ -61,8 +64,8 @@
         double tstart, tend; \
         tstart = MPI_Wtime ();
 
-#define TIMER_STOP(A)                         \
-    tend = MPI_Wtime ();                      \
+#define TIMER_STOP(A)                                \
+    tend = MPI_Wtime ();                             \
     dwrite_eval_profile_add_time (A, tend - tstart); \
     }
 
@@ -81,28 +84,28 @@ herr_t read_decomp (
     bool verbose); /* OUT: to be freed by caller */
 
 herr_t dwrite_eval_ndwrite (MPI_Comm comm,
-                     std::string &out_dir_path,
-                     int nvar,
-                     int ndecom,
-                     MPI_Offset dims[][2],
-                     int nreqs[],
-                     int *offs[],
-                     int *lens[]);
+                            std::string &out_dir_path,
+                            int nvar,
+                            int ndecom,
+                            MPI_Offset dims[][2],
+                            int nreqs[],
+                            int *offs[],
+                            int *lens[]);
 
 herr_t dwrite_eval_dwrite (MPI_Comm comm,
-                     std::string &out_dir_path,
-                     int nvar,
-                     int ndecom,
-                     MPI_Offset dims[][2],
-                     int nreqs[],
-                     int *offs[],
-                     int *lens[]);
+                           std::string &out_dir_path,
+                           int nvar,
+                           int ndecom,
+                           MPI_Offset dims[][2],
+                           int nreqs[],
+                           int *offs[],
+                           int *lens[]);
 
 herr_t dwrite_eval_dwrite_n (MPI_Comm comm,
-                     std::string &out_dir_path,
-                     int nvar,
-                     int ndecom,
-                     MPI_Offset dims[][2],
-                     int nreqs[],
-                     int *offs[],
-                     int *lens[]);
+                             std::string &out_dir_path,
+                             int nvar,
+                             int ndecom,
+                             MPI_Offset dims[][2],
+                             int nreqs[],
+                             int *offs[],
+                             int *lens[]);
