@@ -43,8 +43,8 @@ herr_t dwrite_eval_dwrite (MPI_Comm comm,
     err = dwrite_eval_balloc (nvar, ndecom, dims, nreqs, lens, bufs);
     CHECK_ERR
 
+    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITE)
     MPI_Barrier(comm);
-
     TIMER_START
 
     dxplid = H5Pcreate (H5P_DATASET_XFER);
@@ -92,7 +92,9 @@ herr_t dwrite_eval_dwrite (MPI_Comm comm,
     CHECK_ERR
 
     TIMER_STOP (DWRITE_EVAL_TIMER_DWRITE_WR)
-
+    MPI_Barrier(comm);
+    TIMER_START
+    
     err = dwrite_eval_fin (fid, dids, dsids, bufs);
     CHECK_ERR
 
