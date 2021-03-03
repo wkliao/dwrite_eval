@@ -68,16 +68,18 @@ herr_t dwrite_eval_dwrite_n (MPI_Comm comm,
         counts.push_back (count);
     }
 
+    TIMER_START
     for (i = 0; i < nvar; i++) {
         err = H5Dwrite_n (dids[i], H5T_NATIVE_INT, nreqs[i % ndecom], starts[i%ndecom], counts[i%ndecom], dxplid, bufs[i]);
     }
+    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITEN_WR)
 
     for (i = 0; i < ndecom; i++) {
         free(starts[i][0]);
         free(starts[i]);
     }
     
-    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITEN_WR)
+    TIMER_STOP (DWRITE_EVAL_TIMER_DWRITEN_POST)
     MPI_Barrier(comm);
     TIMER_START
 
